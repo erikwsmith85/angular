@@ -12,6 +12,7 @@ import { LeaderService } from '../services/leader.service';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
+  // leader: Leader;
 
   constructor(private leaderService: LeaderService,
       private route: ActivatedRoute,
@@ -19,8 +20,12 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
-    this.leaders = this.leaderService.getLeaders();
-    this.leader = this.leaderService.getLeader(id);
+    // this.leaders = this.leaderService.getLeaders();
+    // this.leader = this.leaderService.getLeader(id);
+    this.leaderService.getLeaders()
+      .then((leaders) => this.leaders = leaders);
+
+
   }
   goBack(): void {
       this.location.back();
