@@ -16,7 +16,7 @@ export class LeaderService {
   //     setTimeout(() => resolve(LEADERS),2000)
   //   })
   // }
-  getLeaders(): Promise<Leader[]> {
+  getLeaders(): Observable<Leader[]> {
     return of(LEADERS).pipe(delay(2000)).toPromise();
   }
 
@@ -25,7 +25,7 @@ export class LeaderService {
   //     setTimeout(() => resolve(LEADERS.filter((leader) => (leader.id === id)) [0]),2000);
   //   })
   // }
-  getLeader(id: string): Promise<Leader> {
+  getLeader(id: string): Observable<Leader> {
     return of(LEADERS.filter((leader) => (leader.id === id)) [0]).pipe(delay(2000)).toPromise();
   }
 //   getFeaturedLeader(): Promise<Leader> {
@@ -33,7 +33,7 @@ export class LeaderService {
 //       setTimeout(() => resolve(LEADERS.filter((leader) => leader.featured)[0]),2000);
 //     })
 // }
-getFeaturedLeader(): Promise<Leader> {
+getFeaturedLeader(): Observable<Leader> {
   return of(LEADERS.filter((leader) => (leader.featured)) [0]).pipe(delay(2000)).toPromise();
 }
 }
